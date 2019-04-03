@@ -32,12 +32,31 @@
 
 // console.log(findSum(arr, 9));
 
-
-
-function init(){
-    var x = Math.floor(Math.random()*2);
+function init() {
+    var x = Math.floor(Math.random() * 2);
     document.getElementById('round').innerHTML = x === 0 ? 'its O turn' : 'its X turn';
+
+    var cols = document.getElementsByClassName('col');
+    for (var i = 0; i < cols.length; i++) {
+        cols[i].addEventListener('click', (event) => {
+            var currentVal = event.target.innerText;
+            if (currentVal !== '') {
+                return;
+            }
+            if (x === 0) {
+                event.target.innerHTML = 'O'
+                event.target.classList.add('o')
+                x = 1;
+            } else {
+                event.target.innerHTML = 'X';
+                event.target.classList.add('x')
+                x = 0;
+            }
+
+        })
+    }
 }
+
 
 init();
 
